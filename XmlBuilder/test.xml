@@ -1,0 +1,39 @@
+<RootClass>
+	<attr1 value="attr1_value"/>
+	<attr2 value="2"/>
+	<attr3 value="3.0"/>
+	<attr4>attr4_value</attr4>
+	<attr5>5</attr5>
+	<attr6>6.0</attr6>
+	<attr7>true</attr7>
+	<attr8>
+		<attr0>999</attr0>
+	</attr8>
+	<SubClass>
+		<attr1>attr7_value</attr1>
+		<attr2>8.0</attr2>
+	</SubClass>
+	<SubList>
+		<list_item>1</list_item>
+		<list_item>2</list_item>
+		<list_item>3</list_item>
+	</SubList>
+	<SubList2>
+		<SubClass2>
+			<SubClass3>
+				<attr1>attr7_value</attr1>
+				<attr2>8.0</attr2>
+			</SubClass3>
+			<attr1>attr7_value</attr1>
+			<attr2>8.0</attr2>
+		</SubClass2>
+		<SubClass2>
+			<SubClass3>
+				<attr1>attr7_value</attr1>
+				<attr2>8.0</attr2>
+			</SubClass3>
+			<attr1>attr7_value</attr1>
+			<attr2>8.0</attr2>
+		</SubClass2>
+	</SubList2>
+</RootClass>

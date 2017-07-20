@@ -1,0 +1,6 @@
+.vs/
+XmlBuilder/bin/
+XmlBuilder/obj/
+XmlBuilder/test.xml.out
+*.suo
+
