@@ -61,7 +61,7 @@ namespace XmlBuilder.Define
             {
                 return ParseListNode(node);
             }
-            else if (node.Attributes.Count + node.ChildNodes.Count > 1)
+            else if (IsClassNode(node))
             {
                 return ParseClassNode(node);
             }
@@ -145,6 +145,20 @@ namespace XmlBuilder.Define
                 }
             }
             return true;
+        }
+
+        protected static bool IsClassNode(XmlNode node)
+        {
+            if (node.Attributes.Count + node.ChildNodes.Count > 1)
+            {
+                return true;
+            }
+            else if (node.ChildNodes.Count == 1)
+            {
+                if (node.ChildNodes[0].NodeType == XmlNodeType.Element)
+                    return true;
+            }
+            return false;
         }
     }
 }
