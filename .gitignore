@@ -1,6 +1,7 @@
 .vs/
 XmlBuilder/bin/
 XmlBuilder/obj/
-XmlBuilder/test.xml.out
+XmlBuilder/test.xml.data
+XmlBuilder/test.xml.parser
 *.suo
 

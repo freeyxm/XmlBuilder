@@ -12,11 +12,19 @@ namespace XmlBuilder.Define
             get;
             protected set;
         }
+
         public string type
         {
             get;
             protected set;
         }
+
+        public string SrcName
+        {
+            get { return name.Substring(2); }
+        }
+
+        public bool IsAttr { get; set; }
 
         public string ToDefine()
         {
@@ -60,6 +68,7 @@ namespace XmlBuilder.Define
         {
             XmlBase target = ParseValue(attr.Value);
             target.name = "m_" + attr.OwnerElement.Name;
+            target.IsAttr = true;
             return target;
         }
 
@@ -67,6 +76,7 @@ namespace XmlBuilder.Define
         {
             XmlBase target = ParseValue(node.InnerText);
             target.name = "m_" + node.ParentNode.Name;
+            target.IsAttr = false;
             return target;
         }
 
@@ -74,6 +84,7 @@ namespace XmlBuilder.Define
         {
             XmlClass target = new XmlClass();
             target.Parse(node);
+            target.IsAttr = false;
             return target;
         }
 
@@ -81,6 +92,7 @@ namespace XmlBuilder.Define
         {
             XmlList target = new XmlList();
             target.Parse(node);
+            target.IsAttr = false;
             return target;
         }
 

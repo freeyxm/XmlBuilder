@@ -41,5 +41,7 @@ namespace XmlBuilder.Define
                 .Append(" = new ").Append(type).Append("();")
                 .AppendLine();
         }
+
+        public List<XmlBase> ListData { get { return m_list; } }
     }
 }

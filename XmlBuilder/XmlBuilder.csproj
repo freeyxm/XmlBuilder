@@ -42,6 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Define\XmlBool.cs" />
+    <Compile Include="Parser\XmlBaseParser.cs" />
+    <Compile Include="Parser\XmlHelper.cs" />
+    <Compile Include="Parser\XmlFloatParser.cs" />
+    <Compile Include="Parser\XmlBoolParser.cs" />
+    <Compile Include="Parser\XmlClassParser.cs" />
+    <Compile Include="Parser\XmlListParser.cs" />
+    <Compile Include="Parser\XmlStringParser.cs" />
+    <Compile Include="Parser\XmlIntParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Define\XmlBase.cs" />

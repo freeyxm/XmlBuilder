@@ -54,5 +54,27 @@ namespace XmlBuilder.Define
                 .Append(" = new ").Append(type).Append("();")
                 .AppendLine();
         }
+
+        public List<XmlBase> Fields { get { return m_fields; } }
+
+        public bool HasAttrField()
+        {
+            for (int i = 0; i < m_fields.Count; ++i)
+            {
+                if (m_fields[i].IsAttr == true)
+                    return true;
+            }
+            return false;
+        }
+
+        public bool HasNodeField()
+        {
+            for (int i = 0; i < m_fields.Count; ++i)
+            {
+                if (m_fields[i].IsAttr == false)
+                    return true;
+            }
+            return false;
+        }
     }
 }
