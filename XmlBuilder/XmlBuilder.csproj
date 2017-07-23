@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Define\XmlBool.cs" />
     <Compile Include="Parser\XmlBaseParser.cs" />
+    <Compile Include="Parser\XmlFieldParser.cs" />
     <Compile Include="Parser\XmlHelper.cs" />
     <Compile Include="Parser\XmlFloatParser.cs" />
     <Compile Include="Parser\XmlBoolParser.cs" />

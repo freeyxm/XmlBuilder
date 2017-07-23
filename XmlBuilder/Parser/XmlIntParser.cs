@@ -4,9 +4,9 @@ using XmlBuilder.Define;
 
 namespace XmlBuilder.Parser
 {
-    class XmlIntParser : XmlBaseParser
+    class XmlIntParser : XmlFieldParser
     {
-        private XmlInt m_xmlDef;
+        private new XmlInt m_xmlDef;
 
         public XmlIntParser(XmlInt def, string nodeName)
             : base(def, nodeName)
@@ -14,10 +14,9 @@ namespace XmlBuilder.Parser
             m_xmlDef = def;
         }
 
-        public override void ToMember(ref StringBuilder buff, int indent)
+        protected override string GetTypeStr()
         {
-            buff.Append('\t', indent);
-            buff.Append("XmlHelper.ParseInt(").Append(m_nodeName).AppendLine(");");
+            return "Int";
         }
     }
 }

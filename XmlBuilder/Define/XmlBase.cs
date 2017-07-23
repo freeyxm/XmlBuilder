@@ -26,6 +26,8 @@ namespace XmlBuilder.Define
 
         public bool IsAttr { get; set; }
 
+        public bool IsChildAttr { get; set; }
+
         public string ToDefine()
         {
             int indent = 0;

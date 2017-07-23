@@ -6,7 +6,7 @@ namespace XmlBuilder.Parser
 {
     class XmlBaseParser
     {
-        private XmlBase m_xmlDef;
+        protected XmlBase m_xmlDef;
         protected string m_nodeName;
 
         public XmlBaseParser(XmlBase xmlBase, string nodeName)

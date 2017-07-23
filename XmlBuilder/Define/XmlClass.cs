@@ -21,7 +21,13 @@ namespace XmlBuilder.Define
 
             foreach (XmlNode child in node.ChildNodes)
             {
-                m_fields.Add(XmlBase.Parse(child));
+                var field = XmlBase.Parse(child);
+                if (field.IsAttr)
+                {
+                    field.IsAttr = false;
+                    field.IsChildAttr = true;
+                }
+                m_fields.Add(field);
             }
 
             return true;

@@ -4,9 +4,9 @@ using XmlBuilder.Define;
 
 namespace XmlBuilder.Parser
 {
-    class XmlFloatParser : XmlBaseParser
+    class XmlFloatParser : XmlFieldParser
     {
-        private XmlFloat m_xmlDef;
+        private new XmlFloat m_xmlDef;
 
         public XmlFloatParser(XmlFloat def, string nodeName)
             : base(def, nodeName)
@@ -14,10 +14,9 @@ namespace XmlBuilder.Parser
             m_xmlDef = def;
         }
 
-        public override void ToMember(ref StringBuilder buff, int indent)
+        protected override string GetTypeStr()
         {
-            buff.Append('\t', indent);
-            buff.Append("XmlHelper.ParseFloat(").Append(m_nodeName).AppendLine(");");
+            return "Float";
         }
     }
 }
