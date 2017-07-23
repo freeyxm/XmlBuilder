@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\XmlBool.cs" />
+    <Compile Include="Define\XmlBool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\XmlBase.cs" />
-    <Compile Include="Core\XmlClass.cs" />
-    <Compile Include="Core\XmlFloat.cs" />
-    <Compile Include="Core\XmlInt.cs" />
-    <Compile Include="Core\XmlList.cs" />
-    <Compile Include="Core\XmlString.cs" />
+    <Compile Include="Define\XmlBase.cs" />
+    <Compile Include="Define\XmlClass.cs" />
+    <Compile Include="Define\XmlFloat.cs" />
+    <Compile Include="Define\XmlInt.cs" />
+    <Compile Include="Define\XmlList.cs" />
+    <Compile Include="Define\XmlString.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

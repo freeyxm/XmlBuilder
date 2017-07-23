@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace XmlBuilder
+namespace XmlBuilder.Define
 {
     class XmlFloat : XmlBase
     {

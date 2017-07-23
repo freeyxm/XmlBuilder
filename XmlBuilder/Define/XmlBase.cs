@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Text;
 
-namespace XmlBuilder
+namespace XmlBuilder.Define
 {
     class XmlBase
     {
