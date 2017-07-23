@@ -34,7 +34,6 @@ namespace XmlBuilder.Define
                 m_fields[i].ToDefine(ref buff, indent);
             }
 
-            buff.AppendLine();
             buff.Append('\t', indent);
             buff.Append("public class ").Append(type).AppendLine();
             buff.Append('\t', indent);
@@ -45,6 +44,7 @@ namespace XmlBuilder.Define
             }
             buff.Append('\t', indent);
             buff.AppendLine("}");
+            buff.AppendLine();
         }
 
         public override void ToMember(ref StringBuilder buff, int indent)

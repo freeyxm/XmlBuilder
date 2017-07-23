@@ -3,7 +3,7 @@ using System.Xml;
 
 namespace XmlBuilder.Parser
 {
-    class XmlHelper
+    public class XmlHelper
     {
         #region XmlNode
         public static int ParseInt(XmlNode node)

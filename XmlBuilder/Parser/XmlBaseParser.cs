@@ -51,25 +51,41 @@ namespace XmlBuilder.Parser
 
         public string ToDefine()
         {
+            int indent = 0;
             StringBuilder buff = new StringBuilder();
-            buff.Append("public class ").Append(m_xmlDef.SrcName).Append("Parser").AppendLine();
+            buff.AppendLine("using System;");
+            buff.AppendLine("using System.Collections.Generic;");
+            buff.AppendLine("using System.Xml;");
+            buff.AppendLine("using XmlBuilder.Parser;");
+            buff.AppendLine();
+            buff.Append("namespace XmlBuilder.NS_").Append(m_xmlDef.SrcName).AppendLine();
             buff.AppendLine("{");
-            ToDefine(ref buff, 1);
+            ++indent;
+            buff.Append('\t', indent);
+            buff.Append("public class ").Append(m_xmlDef.SrcName).Append("Parser").AppendLine();
+            buff.Append('\t', indent).AppendLine("{");
+            ++indent;
+            ToDefine(ref buff, indent);
             {
-                buff.Append('\t', 1);
+                buff.Append('\t', indent);
                 buff.Append("public ").Append(m_xmlDef.type).Append(" Parse(XmlNode rootNode)").AppendLine();
-                buff.Append('\t', 1).AppendLine("{");
+                buff.Append('\t', indent).AppendLine("{");
+                ++indent;
                 {
-                    buff.Append('\t', 2);
+                    buff.Append('\t', indent);
                     buff.Append("var data = ");
                     var parser = XmlBaseParser.Parse(m_xmlDef, "rootNode");
                     parser.ToMember(ref buff, 0);
 
-                    buff.Append('\t', 2);
+                    buff.Append('\t', indent);
                     buff.AppendLine("return data;");
                 }
-                buff.Append('\t', 1).AppendLine("}");
+                --indent;
+                buff.Append('\t', indent).AppendLine("}");
             }
+            --indent;
+            buff.Append('\t', indent).AppendLine("}");
+            --indent;
             buff.AppendLine("}");
             return buff.ToString();
         }

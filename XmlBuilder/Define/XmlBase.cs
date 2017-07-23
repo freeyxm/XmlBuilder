@@ -28,8 +28,20 @@ namespace XmlBuilder.Define
 
         public string ToDefine()
         {
+            int indent = 0;
             StringBuilder buff = new StringBuilder();
-            ToDefine(ref buff, 0);
+            buff.AppendLine("using System;");
+            buff.AppendLine("using System.Collections.Generic;");
+            buff.AppendLine("using System.Xml;");
+            buff.AppendLine();
+            buff.Append("namespace XmlBuilder.NS_").Append(SrcName).AppendLine();
+            buff.AppendLine("{");
+            ++indent;
+            {
+                ToDefine(ref buff, indent);
+            }
+            --indent;
+            buff.AppendLine("}");
             return buff.ToString();
         }
 

@@ -10,30 +10,38 @@ namespace XmlBuilder
     {
         static void Main(string[] args)
         {
-            string path = "../../test.xml";
-
+            string inputPath = "../../../XmlBuilderTest/Config/";
+            string outputPath = "../../../XmlBuilderTest/Output/";
             XmlDocument doc = new XmlDocument();
-            doc.Load(path);
 
-            XmlBase xmlBase = XmlBase.Parse(doc.FirstChild);
-            string str = xmlBase.ToDefine();
-
-            using (FileStream file = File.Open(path + ".data", FileMode.Create))
+            string[] files = Directory.GetFiles(inputPath);
+            for (int i = 0; i < files.Length; ++i)
             {
-                using (StreamWriter writer = new StreamWriter(file))
-                {
-                    writer.Write(str);
-                    writer.Close();
-                }
+                string file = files[i];
+                doc.Load(file);
+
+                XmlBase xmlBase = XmlBase.Parse(doc.FirstChild);
+
+                FileInfo fileInfo = new FileInfo(file);
+                string name = fileInfo.Name;
+                name = char.ToUpper(name[0]) + name.Substring(1, name.LastIndexOf(".") - 1);
+
+                string dataContent = xmlBase.ToDefine();
+                WriteFile(outputPath + name + "Data.cs", dataContent);
+
+                XmlBaseParser parser = XmlBaseParser.Parse(xmlBase, "rootNode");
+                string parserContent = parser.ToDefine();
+                WriteFile(outputPath + name + "Parser.cs", parserContent);
             }
+        }
 
-            XmlBaseParser parser = XmlBaseParser.Parse(xmlBase, "rootNode");
-            string parserStr = parser.ToDefine();
-            using (FileStream file = File.Open(path + ".parser", FileMode.Create))
+        static void WriteFile(string fileName, string content)
+        {
+            using (FileStream file = File.Open(fileName, FileMode.Create))
             {
                 using (StreamWriter writer = new StreamWriter(file))
                 {
-                    writer.Write(parserStr);
+                    writer.Write(content);
                     writer.Close();
                 }
             }
