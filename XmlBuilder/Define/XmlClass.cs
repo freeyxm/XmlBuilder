@@ -46,14 +46,12 @@ namespace XmlBuilder.Define
 
             buff.Append('\t', indent);
             buff.Append("public class ").Append(type).AppendLine();
-            buff.Append('\t', indent);
-            buff.AppendLine("{");
+            buff.Append('\t', indent).AppendLine("{");
             for (int i = 0; i < m_fields.Count; ++i)
             {
                 m_fields[i].ToMember(ref buff, indent + 1);
             }
-            buff.Append('\t', indent);
-            buff.AppendLine("}");
+            buff.Append('\t', indent).AppendLine("}");
             buff.AppendLine();
         }
 

@@ -24,31 +24,33 @@ namespace XmlBuilder.Parser
             }
 
             buff.Append('\t', indent);
-            buff.Append("private static ").Append(m_xmlDef.type).Append(" Parse").Append(m_xmlDef.SrcName).Append("(XmlNode ")
-                .Append(m_nodeName).AppendLine(")");
+            buff.Append("private static ").Append(m_xmlDef.type).Append(" Parse").Append(m_xmlDef.SrcName)
+                .Append("(XmlNode ").Append(m_nodeName).AppendLine(")");
             buff.Append('\t', indent).AppendLine("{");
+            ++indent;
             {
-                buff.Append('\t', indent + 1);
-                buff.Append(m_xmlDef.type).Append(" data = new ").Append(m_xmlDef.type).Append("();").AppendLine();
+                buff.Append('\t', indent);
+                buff.Append(m_xmlDef.type).Append(" list = new ").Append(m_xmlDef.type).Append("();").AppendLine();
 
                 buff.AppendLine();
-                ToDefineChildNodes(ref buff, indent + 1);
+                ToDefineChildNodes(ref buff, indent, "list");
 
                 buff.AppendLine();
-                buff.Append('\t', indent + 1);
-                buff.AppendLine("return data;");
+                buff.Append('\t', indent);
+                buff.AppendLine("return list;");
             }
+            --indent;
             buff.Append('\t', indent).AppendLine("}");
             buff.AppendLine();
         }
 
-        private void ToDefineChildNodes(ref StringBuilder buff, int indent)
+        private void ToDefineChildNodes(ref StringBuilder buff, int indent, string listName)
         {
             XmlBase defItem = m_xmlDef.ListData[0];
             XmlBaseParser parser = XmlBaseParser.Parse(defItem, "node");
 
             buff.Append('\t', indent);
-            buff.Append("foreach(XmlNode node in ").Append(m_nodeName).AppendLine(".ChildNodes)");
+            buff.Append("foreach (XmlNode node in ").Append(m_nodeName).AppendLine(".ChildNodes)");
             buff.Append('\t', indent).AppendLine("{");
             {
                 buff.Append('\t', indent + 1);
@@ -60,7 +62,7 @@ namespace XmlBuilder.Parser
                 parser.ToMember(ref buff, 0);
 
                 buff.Append('\t', indent + 1);
-                buff.AppendLine("data.Add(dataItem);");
+                buff.Append(listName).AppendLine(".Add(dataItem);");
             }
             buff.Append('\t', indent).AppendLine("}");
         }
