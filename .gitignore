@@ -1,7 +1,10 @@
 .vs/
+ipch/
 XmlBuilder/bin/
 XmlBuilder/obj/
-XmlBuilder/test.xml.data
-XmlBuilder/test.xml.parser
+XmlBuilderTest/bin/
+XmlBuilderTest/obj/
 *.suo
+*.VC.db
+*.VC.opendb
 

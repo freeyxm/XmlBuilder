@@ -1,4 +1,8 @@
 <RootClass>
+	<Attr33>
+		<!-- 1111 -->
+		<attr0>999</attr0>
+	</Attr33>
 	<attr1 value="attr1_value"/>
 	<attr2 value="2"/>
 	<attr3 value="3.0"/>
@@ -6,9 +10,10 @@
 	<attr5>5</attr5>
 	<attr6>6.0</attr6>
 	<attr7>true</attr7>
-	<attr8>
+	<Attr8>
+		<!-- 1111 -->
 		<attr0>999</attr0>
-	</attr8>
+	</Attr8>
 	<SubClass>
 		<attr1>attr7_value</attr1>
 		<attr2>8.0</attr2>
