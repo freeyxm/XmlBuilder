@@ -132,33 +132,53 @@ namespace XmlBuilder.Define
         protected static bool IsListNode(XmlNode node)
         {
             if (node.Attributes.Count > 0)
-                return false;
-            if (node.ChildNodes.Count < 2 && !node.Name.Contains("List"))
-                return false;
-
-            string name = node.ChildNodes[0].Name;
-            foreach (XmlNode child in node.ChildNodes)
             {
-                if (child.Name != name)
-                {
+                return false;
+            }
+
+            List<XmlNode> list = GetChildNodes(node);
+            if (list.Count < 2)
+            {
+                if (list.Count == 1 && node.Name.Contains("List"))
+                    return true;
+                else
                     return false;
-                }
+            }
+
+            string name = list[0].Name;
+            for (int i = 1; i < list.Count; ++i)
+            {
+                if (list[i].Name != name)
+                    return false;
             }
             return true;
         }
 
         protected static bool IsClassNode(XmlNode node)
         {
-            if (node.Attributes.Count + node.ChildNodes.Count > 1)
+            return node.Attributes.Count > 1 || GetChildNodeCount(node) > 0;
+        }
+
+        protected static int GetChildNodeCount(XmlNode node)
+        {
+            int count = 0;
+            foreach (XmlNode child in node.ChildNodes)
             {
-                return true;
+                if (child.NodeType == XmlNodeType.Element)
+                    ++count;
             }
-            else if (node.ChildNodes.Count == 1)
+            return count;
+        }
+
+        protected static List<XmlNode> GetChildNodes(XmlNode node)
+        {
+            List<XmlNode> list = new List<XmlNode>();
+            foreach (XmlNode child in node.ChildNodes)
             {
-                if (node.ChildNodes[0].NodeType == XmlNodeType.Element)
-                    return true;
+                if (child.NodeType == XmlNodeType.Element)
+                    list.Add(child);
             }
-            return false;
+            return list;
         }
     }
 }

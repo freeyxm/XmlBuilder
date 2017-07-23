@@ -21,6 +21,10 @@ namespace XmlBuilder.Define
 
             foreach (XmlNode child in node.ChildNodes)
             {
+                if (child.NodeType != XmlNodeType.Element)
+                {
+                    continue;
+                }
                 var field = XmlBase.Parse(child);
                 if (field.IsAttr)
                 {

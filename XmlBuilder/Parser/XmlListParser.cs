@@ -52,6 +52,10 @@ namespace XmlBuilder.Parser
             buff.Append('\t', indent).AppendLine("{");
             {
                 buff.Append('\t', indent + 1);
+                buff.Append("if (node.NodeType != XmlNodeType.Element)").AppendLine();
+                buff.Append('\t', indent + 2).Append("continue;").AppendLine();
+
+                buff.Append('\t', indent + 1);
                 buff.Append("var dataItem = ");
                 parser.ToMember(ref buff, 0);
 

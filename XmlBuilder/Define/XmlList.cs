@@ -15,6 +15,10 @@ namespace XmlBuilder.Define
 
             foreach (XmlNode child in node.ChildNodes)
             {
+                if (child.NodeType != XmlNodeType.Element)
+                {
+                    continue;
+                }
                 m_list.Add(XmlBase.Parse(child));
             }
 
