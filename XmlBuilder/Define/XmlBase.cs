@@ -41,7 +41,7 @@ namespace XmlBuilder.Define
         {
         }
 
-        public static XmlBase ParseNode(XmlNode node)
+        public static XmlBase Parse(XmlNode node)
         {
             if (node.Attributes.Count + node.ChildNodes.Count > 1)
             {
@@ -83,7 +83,7 @@ namespace XmlBuilder.Define
         protected static XmlClass ParseClassNode(XmlNode node)
         {
             XmlClass target = new XmlClass();
-            target.Parse(node);
+            target.ParseNode(node);
             target.IsAttr = false;
             return target;
         }
@@ -91,7 +91,7 @@ namespace XmlBuilder.Define
         protected static XmlList ParseListNode(XmlNode node)
         {
             XmlList target = new XmlList();
-            target.Parse(node);
+            target.ParseNode(node);
             target.IsAttr = false;
             return target;
         }

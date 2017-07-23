@@ -15,7 +15,7 @@ namespace XmlBuilder
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
-            XmlBase xmlBase = XmlBase.ParseNode(doc.FirstChild);
+            XmlBase xmlBase = XmlBase.Parse(doc.FirstChild);
             string str = xmlBase.ToDefine();
 
             using (FileStream file = File.Open(path + ".data", FileMode.Create))

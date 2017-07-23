@@ -9,13 +9,13 @@ namespace XmlBuilder.Define
     {
         List<XmlBase> m_list = new List<XmlBase>();
 
-        public bool Parse(XmlNode node)
+        public bool ParseNode(XmlNode node)
         {
             name = "m_" + node.Name;
 
             foreach (XmlNode child in node.ChildNodes)
             {
-                m_list.Add(ParseNode(child));
+                m_list.Add(XmlBase.Parse(child));
             }
 
             if (m_list.Count > 0)

@@ -9,7 +9,7 @@ namespace XmlBuilder.Define
     {
         List<XmlBase> m_fields = new List<XmlBase>();
 
-        public bool Parse(XmlNode node)
+        public bool ParseNode(XmlNode node)
         {
             name = "m_" + node.Name;
             type = node.Name;
@@ -21,7 +21,7 @@ namespace XmlBuilder.Define
 
             foreach (XmlNode child in node.ChildNodes)
             {
-                m_fields.Add(ParseNode(child));
+                m_fields.Add(XmlBase.Parse(child));
             }
 
             return true;
