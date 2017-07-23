@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Xml;
 using XmlBuilder.Define;
 
 namespace XmlBuilder.Parser
@@ -26,7 +24,7 @@ namespace XmlBuilder.Parser
             }
 
             buff.Append('\t', indent);
-            buff.Append("private ").Append(m_xmlDef.type).Append(" Parse").Append(m_xmlDef.SrcName).Append("(XmlNode ")
+            buff.Append("private static ").Append(m_xmlDef.type).Append(" Parse").Append(m_xmlDef.SrcName).Append("(XmlNode ")
                 .Append(m_nodeName).AppendLine(")");
             buff.Append('\t', indent).AppendLine("{");
             {
