@@ -57,16 +57,13 @@ namespace XmlBuilder.Define
 
         public static XmlBase Parse(XmlNode node)
         {
-            if (node.Attributes.Count + node.ChildNodes.Count > 1)
+            if (IsListNode(node))
             {
-                if (IsListNode(node))
-                {
-                    return ParseListNode(node);
-                }
-                else
-                {
-                    return ParseClassNode(node);
-                }
+                return ParseListNode(node);
+            }
+            else if (node.Attributes.Count + node.ChildNodes.Count > 1)
+            {
+                return ParseClassNode(node);
             }
             else if (node.Attributes.Count > 0)
             {
@@ -136,7 +133,7 @@ namespace XmlBuilder.Define
         {
             if (node.Attributes.Count > 0)
                 return false;
-            if (node.ChildNodes.Count < 2)
+            if (node.ChildNodes.Count < 2 && !node.Name.Contains("List"))
                 return false;
 
             string name = node.ChildNodes[0].Name;
